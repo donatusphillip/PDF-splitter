@@ -6,6 +6,7 @@ def split_any_pdf(input_pdf_path, output_folder, split_mode, parts=None):
     # Open the input PDF file
     reader = PdfReader(input_pdf_path)
     total_pages = len(reader.pages)
+    bookname = input_pdf_path.split(sep='/')[-1].split(sep=".")[0]
     
     if split_mode == 'equal':
         # Split PDF into equal parts
@@ -19,7 +20,7 @@ def split_any_pdf(input_pdf_path, output_folder, split_mode, parts=None):
             for page in range(start_page, end_page):
                 writer.add_page(reader.pages[page])
             
-            output_pdf_path = os.path.join(output_folder, f"Part_{i+1}.pdf")
+            output_pdf_path = os.path.join(output_folder, f"{bookname} Part_{i+1}.pdf")
             with open(output_pdf_path, 'wb') as output_pdf:
                 writer.write(output_pdf)
             
@@ -33,7 +34,7 @@ def split_any_pdf(input_pdf_path, output_folder, split_mode, parts=None):
             for page in range(start_page - 1, end_page):
                 writer.add_page(reader.pages[page])
             
-            output_pdf_path = os.path.join(output_folder, f"Part_{i}.pdf")
+            output_pdf_path = os.path.join(output_folder, f"{bookname} Part_{i}.pdf")
             with open(output_pdf_path, 'wb') as output_pdf:
                 writer.write(output_pdf)
             
