@@ -1,6 +1,6 @@
 # Hello guys
 
-This program split any PDF file into desired parts, equally or manually.
+This program split any PDF file into desired parts, equally or manually too.
 
 What to Ensure
 1. That you have **`Python`** and have installed the **`pypdf`** library with `pip/conda install pypdf` as appropriate.
